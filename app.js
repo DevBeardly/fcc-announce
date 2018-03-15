@@ -49,4 +49,4 @@ app.use('/user', userRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
-app.listen(process.env.FCCPORT);
+app.listen(process.env.PORT);
