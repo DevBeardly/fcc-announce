@@ -6,12 +6,25 @@ var express        = require('express'),
     passport       = require('passport'),
     LocalStrategy  = require('passport-local'),
     methodOverride = require('method-override'),
+<<<<<<< HEAD
     User           = require('./models/user');
 
 // requiring routes
 var indexRoutes = require('./routes/index'),
     adminRoutes = require('./routes/admin'),
     userRoutes  = require('./routes/user');
+=======
+    Campground     = require('./models/campground'),
+    Comment        = require('./models/comment'),
+    User           = require('./models/user');
+
+// requiring routes
+var campgroundRoutes = require('./routes/campgrounds'),
+    commentRoutes    = require('./routes/comments'),
+    indexRoutes      = require('./routes/index'),
+    adminRoutes      = require('./routes/admin'),
+    userRoutes       = require('./routes/user');
+>>>>>>> 504584adbda780c74f55c924781d0fe61f58d1c5
 
 mongoose.connect(process.env.FCCDBURL);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,5 +55,10 @@ app.use(function (req, res, next) {
 app.use(indexRoutes);
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
+<<<<<<< HEAD
+=======
+app.use('/campgrounds', campgroundRoutes);
+app.use('/campgrounds/:id/comments', commentRoutes);
+>>>>>>> 504584adbda780c74f55c924781d0fe61f58d1c5
 
 app.listen(process.env.PORT);
