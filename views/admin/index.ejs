@@ -41,18 +41,12 @@
             </li>
 
             <li class="nav-header">User</li>
-            <% if (!currentUser) { %>
-              <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-              <li class="nav-item"><a class="nav-link" href="/register">Sign Up</a></li>
-            <% } else { %>
               <li class="nav-item">
-                <a class="nav-link" href="http://getbootstrap.com" target="blank">
+                <a class="nav-link" href="/user" target="blank">
                   Personal Profile
                 </a>
               </li>
-              <li class="nav-item"><a class="nav-link disabled">Hello <%= currentUser.username %>!</a></li>
               <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-            <% } %>
           </ul>
           <hr class="visible-xs mt-3">
         </div>
