@@ -44,6 +44,6 @@ app.use(function (req, res, next) {
 app.use(indexRoutes);
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes),
-app.use('/announcement', announcementRoutes);
+app.use('/announcements', announcementRoutes);
 
 app.listen(process.env.PORT);
