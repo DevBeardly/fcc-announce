@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
+var Announcement = require('../models/announcement');
 var middleware = require('../middleware');
 
 // LANDING PAGE
