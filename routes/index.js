@@ -6,7 +6,13 @@ var middleware = require('../middleware');
 
 // LANDING PAGE
 router.get('/', function (req, res) {
-  res.render('index');
+  Announcement.find({}, function (err, allAnnouncements) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', { announcements: allAnnouncements });
+    }
+  });
 });
 
 // show register form

@@ -42,7 +42,22 @@
 
       <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
         <div class="card-body">
-          <h1>ANNOUNCEMENTS GO HERE</h1>
+          <% announcements.forEach(function(announcement){ %>
+            <div class="announce">
+              <div class="announce-banner">
+                <img src="<%= announcement.image %>">
+              </div>
+              <div class="announce-title">
+                <h2><%= announcement.name %></h2>
+              </div>
+              <div class="announce-body">
+                <p><%= announcement.description %></p>
+              </div>
+              <!-- <div class="announce-cta">
+                <a class="btn btn-lg btn-info pull-right" href="" target="_blank">More Info</a>
+              </div> -->
+            </div>
+          <% }); %>
         </div>
       </div>
     </div>
