@@ -23,7 +23,7 @@ router.get('/register', function (req, res) {
 
 // handle signup logic
 router.post('/register', function (req, res) {
-  var newUser = new User({ username: req.body.username });
+  var newUser = new User({ username: req.body.username, fullname: req.body.fullname, isMember: true, isEditor: true, isAdmin: true });
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       req.flash('error', err.message);
@@ -44,9 +44,14 @@ router.get('/login', function (req, res) {
 
 //handle login logic
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/user',
   failureRedirect: '/login',
-}), function (req, res) {});
+}), function (req, res) {
+  if (currentUser.isAdmin || currentUser.isEditor) {
+    res.redirect('/admin');
+  } else if (!currentUser.isAdmin || !currentUser.isEditor) {
+    res.redirect('/user');
+  }
+});
 
 // logout route
 router.get('/logout', function (req, res) {
