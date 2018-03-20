@@ -6,12 +6,14 @@ var express        = require('express'),
     passport       = require('passport'),
     LocalStrategy  = require('passport-local'),
     methodOverride = require('method-override'),
-    User           = require('./models/user');
+    User           = require('./models/user'),
+    Announcement   = require('./models/announcement');
 
 // requiring routes
-var indexRoutes = require('./routes/index'),
-    adminRoutes = require('./routes/admin'),
-    userRoutes  = require('./routes/user');
+var indexRoutes        = require('./routes/index'),
+    adminRoutes        = require('./routes/admin'),
+    userRoutes         = require('./routes/user'),
+    announcementRoutes = require('./routes/announcement');
 
 mongoose.connect(process.env.FCCDBURL);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,6 +43,7 @@ app.use(function (req, res, next) {
 
 app.use(indexRoutes);
 app.use('/admin', adminRoutes);
-app.use('/user', userRoutes);
+app.use('/user', userRoutes),
+app.use('/announcement', announcementRoutes);
 
 app.listen(process.env.PORT);
