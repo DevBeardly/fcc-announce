@@ -12,11 +12,16 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 
 // CREATE - add new announcement to DB
 router.post('/', middleware.isLoggedIn, function (req, res) {
-  Announcement.create(req.body.announcement, function (err, newlyCreated) {
+  Announcement.create(req.body.announcement, function (err, announcement) {
     if (err) {
       req.flash('error', 'Your announcement could not be saved. Please try again.');
       res.redirect('back');
     } else {
+      announcement.author.id = req.user._id;
+      announcement.author.fullname = req.user.fullname;
+
+      announcement.save();
+
       req.flash('success', 'Your announcement was successfully created!');
       res.redirect('/admin');
     }
