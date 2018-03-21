@@ -31,7 +31,7 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
 });
 
 // EDIT - display form to update a campground
-router.get(':/id/edit', function (req, res) {
+router.get('/:id/edit', function (req, res) {
   Announcement.findById(req.params.id, function (err, foundAnnouncement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
@@ -50,7 +50,7 @@ router.put('/:id', function (req, res) {
       res.redirect('back');
     } else {
       req.flash('success', 'Successfully updated your announcement!');
-      res.redirect('/admin');
+      res.redirect('/admin/announcements');
     }
   });
 });
