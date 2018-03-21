@@ -50,6 +50,6 @@ textarea {
   height: 12em;
 }
 
-.card-body {
+.card-body > strong {
   font-weight: bold;
 }
