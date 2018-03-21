@@ -23,20 +23,18 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 
 // CREATE - ADD USER TO DB
 router.post('/', middleware.isLoggedIn, function (req, res) {
-  if (req.body.isEditor == "on") {
-    var userEditor = true;
-  } else if (req.body.isAdmin == "on") {
-    var userAdmin = true;
-  } else {
-    userEditor = false;
-    userAdmin = false;
-  }
   var newUser = new User(
     { username: req.body.username, 
       fullname: req.body.fullname,
-      isAdmin: userAdmin,
-      isEditor: userEditor,
+      isAdmin: false,
+      isEditor: false,
     });
+  if (req.body.isEditor == "on") {
+    user.isEditor = true;
+  }
+  if (req.body.isAdmin == "on") {
+    user.isAdmin = true;
+  }
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       req.flash('error', err.message);
