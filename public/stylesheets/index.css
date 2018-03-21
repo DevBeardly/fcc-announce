@@ -49,3 +49,7 @@ a, a:visited, a:hover, a:active {
 textarea {
   height: 12em;
 }
+
+.card-body {
+  font-weight: bold;
+}
