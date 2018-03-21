@@ -92,21 +92,27 @@
     <tr>
       <th><input type="checkbox" class="select-all" id="selectAll"></th>
       <th>ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date Updated</th>
-      <th>Author</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
     </tr>
   </thead>
   <tbody>
-    <% announcements.forEach(function(announcement){ %>
+    <% users.forEach(function(user){ %>
     <tr>
       <td><input type="checkbox" class="select-row"></td>
-      <td><a href="#"><%= announcement._id %></a></td>
-      <td><%= announcement.title %></td>
-      <td><%= announcement.description %></td>
-      <td><%= announcement.dateUpdated %></td>
-      <td><%= announcement.author.fullname %></td>
+      <td><a href="#"><%= user._id %></a></td>
+      <td><%= user.fullname %></td>
+      <td><%= user.username %></td>
+      <td>
+        <% if (user.isAdmin) { %>
+          Admin
+        <% } else if (user.isEditor) { %>
+          Editor
+        <% } else if (user.isMember) { %>
+          Member
+        <% } %>
+      </td>
     </tr>
     <% }); %>
   </tbody>

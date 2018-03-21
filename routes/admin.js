@@ -51,11 +51,11 @@ router.get('/connect', middleware.isLoggedIn, function (req, res) {
 
 // ADMIN USERS PANEL
 router.get('/users', middleware.isLoggedIn, function (req, res) {
-  Announcement.find({}, function (err, allAnnouncements) {
+  User.find({}, function (err, allUsers) {
     if (err) {
       console.log(err);
     } else {
-      res.render('admin/users', { announcements: allAnnouncements });
+      res.render('admin/users', { users: allUsers });
     }
   });
 });
