@@ -63,7 +63,7 @@ router.delete('/:id', function (req, res) {
       res.redirect('/admin');
     } else {
       req.flash('success', 'Successfully deleted your announcement.');
-      res.redirect('/admin');
+      res.redirect('/admin/announcements');
     }
   });
 });
