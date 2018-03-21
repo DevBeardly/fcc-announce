@@ -26,16 +26,16 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
   var newUser = new User(
     { username: req.body.username, 
       fullname: req.body.fullname,
-      isAdmin: false,
-      isEditor: false,
+      isAdmin: req.body.isAdmin,
+      isEditor: req.body.isEditor,
       isMember: true,
     });
-  if (req.body.isEditor === true) {
-    newUser.isEditor = true;
-  }
-  if (req.body.isAdmin === true) {
-    newUser.isAdmin = true;
-  }
+  // if (req.body.isEditor === true) {
+  //   newUser.isEditor = true;
+  // }
+  // if (req.body.isAdmin === true) {
+  //   newUser.isAdmin = true;
+  // }
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       req.flash('error', err.message);
