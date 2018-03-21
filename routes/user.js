@@ -31,10 +31,10 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
       isMember: true,
     });
   if (req.body.isEditor === true) {
-    user.isEditor = true;
+    newUser.isEditor = true;
   }
   if (req.body.isAdmin === true) {
-    user.isAdmin = true;
+    newUser.isAdmin = true;
   }
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
