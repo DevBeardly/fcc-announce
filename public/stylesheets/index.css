@@ -45,3 +45,7 @@ a, a:visited, a:hover, a:active {
 .alert {
   margin-top: 10px;
 }
+
+textarea {
+  height: 12em;
+}
