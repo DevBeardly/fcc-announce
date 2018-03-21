@@ -112,12 +112,12 @@
       </td>
       <td>
         <div class="btn-group">
-          <a href="../users/<%= user._id %>/edit">
+          <a href="../user/<%= user._id %>/edit">
             <button type="button" class="btn btn-outline-primary edit-button">
               <span class="icon icon-pencil"></span>
             </button>
           </a>
-          <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+          <form action="../user/<%= user._id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-outline-primary delete-button">
               <span class="icon icon-erase"></span>
             </button>
