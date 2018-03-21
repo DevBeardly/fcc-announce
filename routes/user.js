@@ -23,6 +23,8 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 
 // CREATE - ADD USER TO DB
 router.post('/', middleware.isLoggedIn, function (req, res) {
+  console.log(req.body.isEditor);
+  console.log(req.body.isAdmin);
   var newUser = new User(
     { username: req.body.username, 
       fullname: req.body.fullname,
