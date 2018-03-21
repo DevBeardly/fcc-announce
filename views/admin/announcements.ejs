@@ -108,11 +108,11 @@
       <td><%= announcement.author.fullname %></td>
       <td>
           <div class="btn-group">
-            <!-- <a href="../announcements/<%= announcement._id %>/edit">
+            <a href="../announcements/<%= announcement._id %>/edit">
               <button type="button" class="btn btn-outline-primary">
                 <span class="icon icon-pencil"></span>
               </button>
-            </a> -->
+            </a>
             <form action="/announcements/<%= announcement._id %>?_method=DELETE" method="POST">
               <button type="submit" class="btn btn-outline-primary">
                 <span class="icon icon-erase"></span>
