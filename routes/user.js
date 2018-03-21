@@ -6,7 +6,7 @@ var middleware = require('../middleware');
 
 // USER PROFILE DASHBOARD ROUTE
 router.get('/', middleware.isLoggedIn, function (req, res) {
-  User.findById(currentUser, function (err, foundUser) {
+  User.findById(req.user._id, function (err, foundUser) {
     if (err) {
       req.flash('error', 'We couldn\'t find you, please try again.');
       res.redirect('/');
