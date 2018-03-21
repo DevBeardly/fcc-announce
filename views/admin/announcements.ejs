@@ -106,17 +106,19 @@
       <td><%- announcement.description.substring(0, 100) %>...</td>
       <td><%= announcement.dateUpdated.toDateString() %></td>
       <td><%= announcement.author.fullname %></td>
-      <td> 
-        <a href="../announcements/<%= announcement._id %>/edit">
-          <button type="button" class="btn btn-outline-primary">
-            <span class="icon icon-pencil"></span>
-          </button>
-        </a>
-        <form action="/announcements/<%= announcement._id %>?_method=DELETE" method="POST">
-          <button type="submit" class="btn btn-outline-primary">
-            <span class="icon icon-erase"></span>
-          </button>
-        </form>
+      <td>
+        <div class="btn-group">
+          <a href="../announcements/<%= announcement._id %>/edit">
+            <button type="button" class="btn btn-outline-primary edit-button">
+              <span class="icon icon-pencil"></span>
+            </button>
+          </a>
+          <form action="/announcements/<%= announcement._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-outline-primary delete-button">
+              <span class="icon icon-erase"></span>
+            </button>
+          </form>
+        </div>
       </td>
     </tr>
     <% }); %>
