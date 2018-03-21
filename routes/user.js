@@ -28,6 +28,7 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
       fullname: req.body.fullname,
       isAdmin: false,
       isEditor: false,
+      isMember: true,
     });
   if (req.body.isEditor == "on") {
     user.isEditor = true;
