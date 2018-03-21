@@ -10,8 +10,15 @@ router.get('/', middleware.isLoggedIn, function (req, res) {
 });
 
 // EDIT CURRENT USER INFO ROUTE
-router.get('/edit', middleware.isLoggedIn, function (req, res) {
-  res.render('user/edit');
+router.get('/:id/edit', middleware.isLoggedIn, function (req, res) {
+  User.findById(req.params.id, function (err, foundUser) {
+    if (err) {
+      req.flash('error', 'Could not find that user.')
+      res.redirect('back');
+    } else {
+      res.render('user/edit', { user: foundUser });
+    }
+  });
 });
 
 // UPDATE CURRENT USER INFO ROUTE
