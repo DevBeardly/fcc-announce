@@ -11,14 +11,15 @@ router.get('/', middleware.isLoggedIn, function (req, res) {
 
 // EDIT USER INFO ROUTE
 router.get('/:id/edit', middleware.isLoggedIn, function (req, res) {
-  User.findById(req.params.id, function (err, foundUser) {
-    if (err) {
-      req.flash('error', 'Could not find that user.');
-      res.redirect('back');
-    } else {
-      res.render('user/edit', { user: foundUser });
-    }
-  });
+  res.send('YOU\'VE REACHED THE USER EDIT ROUTE!');
+  // User.findById(req.params.id, function (err, foundUser) {
+  //   if (err) {
+  //     req.flash('error', 'Could not find that user.');
+  //     res.redirect('back');
+  //   } else {
+  //     res.render('user/edit', { user: foundUser });
+  //   }
+  // });
 });
 
 // UPDATE USER INFO ROUTE
