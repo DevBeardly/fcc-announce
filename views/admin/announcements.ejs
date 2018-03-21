@@ -110,12 +110,16 @@
       <td><%= announcement.author.fullname %></td>
       <td>
           <div class="btn-group">
-            <a type="button" href="../announcements/<%= announcement._id %>/edit" class="btn btn-outline-primary">
-              <span class="icon icon-pencil"></span>
+            <a href="../announcements/<%= announcement._id %>/edit">
+              <button type="button" class="btn btn-outline-primary">
+                <span class="icon icon-pencil"></span>
+              </button>
             </a>
-            <button type="button" class="btn btn-outline-primary">
-              <span class="icon icon-erase"></span>
-            </button>
+            <form action="/announcements/<%= announcement._id %>?_method=DELETE" method="POST">
+              <button type="button" class="btn btn-outline-primary">
+                <span class="icon icon-erase"></span>
+              </button>
+            </form>
           </div>
         </td>
     </tr>
