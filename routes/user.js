@@ -6,7 +6,14 @@ var middleware = require('../middleware');
 
 // USER PROFILE DASHBOARD ROUTE
 router.get('/', middleware.isLoggedIn, function (req, res) {
-  res.render('user/index');
+  User.findById(currentUser, function (err, foundUser) {
+    if (err) {
+      req.flash('error', 'We couldn\'t find you, please try again.');
+      res.redirect('/');
+    } else {
+      res.render('user/index', { user: foundUser });
+    }
+  });
 });
 
 // EDIT USER INFO ROUTE
