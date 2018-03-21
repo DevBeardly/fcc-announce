@@ -28,7 +28,7 @@ router.get('/announcements', middleware.isLoggedIn, function (req, res) {
 });
 
 // ADMIN GROUPS PANEL
-router.get('/', middleware.isLoggedIn, function (req, res) {
+router.get('/groups', middleware.isLoggedIn, function (req, res) {
   Announcement.find({}, function (err, allAnnouncements) {
     if (err) {
       console.log(err);
@@ -39,7 +39,7 @@ router.get('/', middleware.isLoggedIn, function (req, res) {
 });
 
 // ADMIN CONNECT PANEL
-router.get('/', middleware.isLoggedIn, function (req, res) {
+router.get('/connect', middleware.isLoggedIn, function (req, res) {
   Announcement.find({}, function (err, allAnnouncements) {
     if (err) {
       console.log(err);
@@ -50,7 +50,7 @@ router.get('/', middleware.isLoggedIn, function (req, res) {
 });
 
 // ADMIN USERS PANEL
-router.get('/', middleware.isLoggedIn, function (req, res) {
+router.get('/users', middleware.isLoggedIn, function (req, res) {
   Announcement.find({}, function (err, allAnnouncements) {
     if (err) {
       console.log(err);
