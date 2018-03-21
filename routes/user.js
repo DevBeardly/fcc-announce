@@ -30,12 +30,6 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
       isEditor: req.body.isEditor,
       isMember: true,
     });
-  // if (req.body.isEditor === true) {
-  //   newUser.isEditor = true;
-  // }
-  // if (req.body.isAdmin === true) {
-  //   newUser.isAdmin = true;
-  // }
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       req.flash('error', err.message);
