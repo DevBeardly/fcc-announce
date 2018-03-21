@@ -16,6 +16,26 @@ router.get('/', middleware.isLoggedIn, function (req, res) {
   });
 });
 
+// NEW USER FORM
+router.get('/new', middleware.isLoggedIn, function (req, res) {
+  res.render('user/new');
+});
+
+// CREATE - ADD USER TO DB
+router.post('/', middleware.isLoggedIn, function (req, res) {
+  User.register(req.body.user, req.body.password, function (err, user) {
+    if (err) {
+      req.flash('error', err.message);
+      return res.redirect('/user/new');
+    }
+
+    passport.authenticate('local')(req, res, function () {
+      req.flash('success', 'New user added: ' + user.fullname);
+      res.redirect('/admin/users');
+    })
+  });
+});
+
 // EDIT USER INFO ROUTE
 router.get('/:id/edit', middleware.isLoggedIn, function (req, res) {
   User.findById(req.params.id, function (err, foundUser) {
