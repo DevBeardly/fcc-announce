@@ -105,8 +105,8 @@
       <!-- <td><input type="checkbox" class="select-row"></td> -->
       <td><a href="#"><%= announcement._id %></a></td>
       <td><%= announcement.title %></td>
-      <td><%= announcement.description %></td>
-      <td><%= announcement.dateUpdated %></td>
+      <td><%- announcement.description.substring(0, 100) %>...</td>
+      <td><%= announcement.dateUpdated.toDateString() %></td>
       <td><%= announcement.author.fullname %></td>
       <td>
           <div class="btn-group">

@@ -1,4 +1,5 @@
 var express = require('express');
+var expressSanitizer = require('express-sanitizer');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
@@ -12,6 +13,7 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 
 // CREATE - add new announcement to DB
 router.post('/', middleware.isLoggedIn, function (req, res) {
+  req.body.announcement.description = req.sanitize(req.body.announcement.description);
   Announcement.create(req.body.announcement, function (err, announcement) {
     if (err) {
       req.flash('error', 'Your announcement could not be saved. Please try again.');
