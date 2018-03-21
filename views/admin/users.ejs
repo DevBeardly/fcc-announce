@@ -90,17 +90,16 @@
 <table class="table" data-sort="table">
   <thead>
     <tr>
-      <th><input type="checkbox" class="select-all" id="selectAll"></th>
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
       <th>Role</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% users.forEach(function(user){ %>
     <tr>
-      <td><input type="checkbox" class="select-row"></td>
       <td><a href="#"><%= user._id %></a></td>
       <td><%= user.fullname %></td>
       <td><%= user.username %></td>
@@ -112,6 +111,16 @@
         <% } else if (user.isMember) { %>
           Member
         <% } %>
+      </td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-primary">
+            <span class="icon icon-pencil"></span>
+          </button>
+          <button type="button" class="btn btn-outline-primary">
+            <span class="icon icon-erase"></span>
+          </button>
+        </div>
       </td>
     </tr>
     <% }); %>
