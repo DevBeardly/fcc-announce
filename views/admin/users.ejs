@@ -90,7 +90,6 @@
 <table class="table" data-sort="table">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Name</th>
       <th>Email</th>
       <th>Role</th>
@@ -100,7 +99,6 @@
   <tbody>
     <% users.forEach(function(user){ %>
     <tr>
-      <td><a href="#"><%= user._id %></a></td>
       <td><%= user.fullname %></td>
       <td><%= user.username %></td>
       <td>
