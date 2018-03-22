@@ -34,11 +34,13 @@
             <!-- <li class="nav-item">
               <a class="nav-link " href="../admin/connect">Connect</a>
             </li> -->
-            <li class="nav-item">
-              <a class="nav-link "href="../admin/users">
-                Users
-              </a>
-            </li>
+            <% if (user.isAdmin) { %>
+              <li class="nav-item">
+                <a class="nav-link "href="../admin/users">
+                  Users
+                </a>
+              </li>
+            <% } %>
 
             <li class="nav-header">User</li>
               <li class="nav-item">
