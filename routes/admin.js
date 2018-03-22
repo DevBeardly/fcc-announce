@@ -23,12 +23,12 @@ router.get('/announcements', middleware.isLoggedIn, function (req, res) {
 
 // ADMIN GROUPS PANEL
 router.get('/groups', middleware.isLoggedIn, function (req, res) {
-  res.redirect('/admin/announcements')
+  res.redirect('/admin/announcements');
 });
 
 // ADMIN CONNECT PANEL
 router.get('/connect', middleware.isLoggedIn, function (req, res) {
-  res.redirect('/admin/announcements')
+  res.redirect('/admin/announcements');
 });
 
 // ADMIN USERS PANEL
