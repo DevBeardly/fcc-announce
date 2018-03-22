@@ -107,25 +107,16 @@ router.get('/reset', middleware.isLoggedIn, function (req, res) {
   res.render('user/reset');
 });
 
-router.post('/reset', middleware.isLoggedIn, function (req, res) {
-  req.user.setPassword(req.body.password, function (err) {
-    if (err) {
-      console.log(err);
-      req.flash('error', 'Something went wrong with the database. Please try again later.');
-      res.redirect('/user');
-    } else {
-      req.user.save();
-      req.flash('success', 'Successfully updated your password.');
-      res.redirect('/user');
-    }
-  })
-  
+router.post('/reset', middleware.isLoggedIn, function (req, res) {  
   User.findById(req.user._id, function (err, user) {
     if (err) {
       req.flash('error', 'Something went wrong with the database. Try again later.');
       res.redirect('/user');
     } else {
-      user.setPassword()
+      user.setPassword(req.body.password);
+      user.save();
+      req.flash('success', 'Successfully updated your password.');
+      res.redirect('/user');
     }
   });
 });
