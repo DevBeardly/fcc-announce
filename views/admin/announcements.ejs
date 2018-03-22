@@ -109,7 +109,7 @@
       <td><%= announcement.title %></td>
       <td><%= announcement.author.fullname %></td>
         <% var dateYear = announcement.dateUpdated.getFullYear().toString().substring(2,3) %>
-        <% var date = announcement.dateUpdated.getMonth() + '/' + announcement.dateUpdated.getDay() + '/' + dateYear %>
+        <% var date = (announcement.dateUpdated.getMonth() + 1) + '/' + announcement.dateUpdated.getDate() + '/' + announcement.dateUpdated.getFullYear() %>
       <td><%= date %></td>
       <!-- <td><%= announcement.dateUpdated.toDateString() %></td> -->
       <td>
