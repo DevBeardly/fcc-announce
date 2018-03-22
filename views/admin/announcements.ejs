@@ -140,7 +140,7 @@
                 <span class="icon icon-controller-paus"></span>
               </button>
             </a>
-          <% } else { %>
+          <% } else if (announcement.isApproved) { %>
             <a href="../announcements/<%= announcement._id %>/publish">
               <button type="button" class="btn btn-outline-primary center-button">
                 <span class="icon icon-controller-play"></span>
