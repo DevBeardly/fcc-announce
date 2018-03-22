@@ -70,7 +70,7 @@ router.delete('/:id', function (req, res) {
 });
 
 // APPROVE
-router.get('/:id/approve', function (req, res) {
+router.get('/:id/approve', middleware.isAdmin, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
@@ -86,7 +86,7 @@ router.get('/:id/approve', function (req, res) {
 });
 
 // UNAPPROVE
-router.get('/:id/unapprove', function (req, res) {
+router.get('/:id/unapprove', middleware.isAdmin, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
@@ -102,7 +102,7 @@ router.get('/:id/unapprove', function (req, res) {
 });
 
 // PUBLISH
-router.get('/:id/publish', function (req, res) {
+router.get('/:id/publish', middleware.isEditor, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
@@ -118,7 +118,7 @@ router.get('/:id/publish', function (req, res) {
 });
 
 // UNPUBLISH
-router.get('/:id/unpublish', function (req, res) {
+router.get('/:id/unpublish', middleware.isEditor, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
