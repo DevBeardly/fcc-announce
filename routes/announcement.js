@@ -93,6 +93,7 @@ router.get('/:id/unapprove', middleware.isEditor, function (req, res) {
       res.redirect('back');
     } else {
       announcement.isApproved = false;
+      announcement.isPublished = false;
       announcement.save();
 
       req.flash('success', 'That announcement is no longer approved!');
