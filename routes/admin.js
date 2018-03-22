@@ -7,7 +7,7 @@ var middleware = require('../middleware');
 
 // ADMIN DASHBOARD LANDING
 router.get('/', middleware.isLoggedIn, function (req, res) {
-  res.redirect('/admin/announcements')
+  res.redirect('/admin/announcements');
 });
 
 // ADMIN ANNOUNCEMENTS PANEL
