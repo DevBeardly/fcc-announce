@@ -96,7 +96,9 @@
       <th>Name</th>
       <th>Email</th>
       <th>Role</th>
-      <th>Actions</th>
+      <% if (currentUser.isAdmin) { %>
+        <th>Actions</th>
+      <% } %>
     </tr>
   </thead>
   <tbody>
@@ -113,20 +115,22 @@
           Member
         <% } %>
       </td>
-      <td>
-        <div class="btn-group">
-          <a href="../user/<%= user._id %>/edit">
-            <button type="button" class="btn btn-outline-primary edit-button">
-              <span class="icon icon-pencil"></span>
-            </button>
-          </a>
-          <form action="../user/<%= user._id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-outline-primary delete-button">
-              <span class="icon icon-erase"></span>
-            </button>
-          </form>
-        </div>
-      </td>
+      <% if (currentUser.isAdmin) { %>
+        <td>
+          <div class="btn-group">
+            <a href="../user/<%= user._id %>/edit">
+              <button type="button" class="btn btn-outline-primary edit-button">
+                <span class="icon icon-pencil"></span>
+              </button>
+            </a>
+            <form action="../user/<%= user._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-outline-primary delete-button">
+                <span class="icon icon-erase"></span>
+              </button>
+            </form>
+          </div>
+        </td>
+      <% } %>
     </tr>
     <% }); %>
   </tbody>
