@@ -44,7 +44,7 @@ router.get('/:id/edit', function (req, res) {
 
 // UPDATE - push edits to DB
 router.put('/:id', function (req, res) {
-  req.body.announcement.dateUpdated = Date.now;
+  req.body.announcement.dateUpdated = Date.now();
   Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
       console.log(err);
