@@ -119,18 +119,20 @@
               <span class="icon icon-pencil"></span>
             </button>
           </a>
-          <% if (announcement.isApproved) { %>
-            <a href="../announcements/<%= announcement._id %>/unapprove">
-              <button type="button" class="btn btn-outline-primary center-button">
-                <span class="icon icon-block"></span>
-              </button>
-            </a>
-          <% } else { %>
-            <a href="../announcements/<%= announcement._id %>/approve">
-              <button type="button" class="btn btn-outline-primary center-button">
-                <span class="icon icon-check"></span>
-              </button>
-            </a>
+          <% if (currentUser.isAdmin) { %>
+            <% if (announcement.isApproved) { %>
+              <a href="../announcements/<%= announcement._id %>/unapprove">
+                <button type="button" class="btn btn-outline-primary center-button">
+                  <span class="icon icon-block"></span>
+                </button>
+              </a>
+            <% } else { %>
+              <a href="../announcements/<%= announcement._id %>/approve">
+                <button type="button" class="btn btn-outline-primary center-button">
+                  <span class="icon icon-check"></span>
+                </button>
+              </a>
+            <% } %>
           <% } %>
           <% if (announcement.isPublished) { %>
             <a href="../announcements/<%= announcement._id %>/unpublish">
