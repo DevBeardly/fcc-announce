@@ -3,6 +3,10 @@
 <div class='container'>
   <h1 style='text-align: center'>Edit User: <%= user.fullname %></h1>
   <div class='row'>
+
+    <div style='width: 45%; margin: 15px auto;'>
+      <p>Changing your email will require you to log back in.</p>
+    </div>
   
     <div style='width: 45%; margin: 15px auto;'>
       <form action='/user/edit/<%= user._id %>?_method=PUT' method='POST'>
