@@ -108,11 +108,16 @@ router.get('/:id/publish', middleware.isEditor, function (req, res) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
-      announcement.isPublished = true;
-      announcement.save();
+      if (announcement.isApproved) {
+        announcement.isPublished = true;
+        announcement.save();
 
-      req.flash('success', 'That announcement has been published!');
-      res.redirect('back');
+        req.flash('success', 'That announcement has been published!');
+        res.redirect('back');
+      } else {
+        req.flash('error', 'That announcement must be approved first.');
+        res.redirect('back');
+      }
     }
   });
 });
