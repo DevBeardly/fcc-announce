@@ -47,7 +47,6 @@ router.put('/:id', function (req, res) {
   req.body.announcement.dateUpdated = Date.now();
   Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
-      console.log(err);
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
