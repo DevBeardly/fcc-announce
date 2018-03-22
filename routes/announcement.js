@@ -30,7 +30,7 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
   });
 });
 
-// EDIT - display form to update a campground
+// EDIT - display form to update an announcement
 router.get('/:id/edit', function (req, res) {
   Announcement.findById(req.params.id, function (err, foundAnnouncement) {
     if (err) {
@@ -47,6 +47,7 @@ router.put('/:id', function (req, res) {
   req.body.announcement.dateUpdated = Date.now;
   Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
+      console.log(err);
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
