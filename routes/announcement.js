@@ -77,8 +77,9 @@ router.get('/:id/approve', function (req, res) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
+      console.log(updatedAnnouncement);
       req.flash('success', 'That announcement has been approved!');
-      res.redirect('/admin/announcements');
+      res.redirect('back');
     }
   });
 });
@@ -92,7 +93,7 @@ router.get('/:id/unapprove', function (req, res) {
       res.redirect('back');
     } else {
       req.flash('success', 'That announcement is no longer approved!');
-      res.redirect('/admin/announcements');
+      res.redirect('back');
     }
   });
 });
@@ -106,7 +107,7 @@ router.get('/:id/publish', function (req, res) {
       res.redirect('back');
     } else {
       req.flash('success', 'That announcement has been published!');
-      res.redirect('/admin/announcements');
+      res.redirect('back');
     }
   });
 });
@@ -120,7 +121,7 @@ router.get('/:id/unpublish', function (req, res) {
       res.redirect('back');
     } else {
       req.flash('success', 'That announcement is no longer published!');
-      res.redirect('/admin/announcements');
+      res.redirect('back');
     }
   });
 });
