@@ -107,6 +107,28 @@ router.get('/reset', middleware.isLoggedIn, function (req, res) {
   res.render('user/reset');
 });
 
+router.post('/reset', middleware.isLoggedIn, function (req, res) {
+  req.user.setPassword(req.body.password, function (err) {
+    if (err) {
+      req.flash('error', 'Something went wrong with the database. Please try again later.');
+      res.redirect('/user');
+    } else {
+      req.user.save();
+      req.flash('success', 'Successfully updated your password.');
+      res.redirect('/user');
+    }
+  })
+  
+  User.findById(req.user._id, function (err, user) {
+    if (err) {
+      req.flash('error', 'Something went wrong with the database. Try again later.');
+      res.redirect('/user');
+    } else {
+      user.setPassword()
+    }
+  });
+});
+
 // SUBMIT A NEW ANNOUNCEMENT ROUTE
 // EDIT AN UNAPPROVED ANNOUNCEMENT ROUTE
 // ^^ DO THESE BOTH THROUGH THE ANNOUNCEMENTS ROUTES, VIA MIDDLEWARE LOGIC
