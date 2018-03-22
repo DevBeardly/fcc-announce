@@ -71,13 +71,14 @@ router.delete('/:id', function (req, res) {
 
 // APPROVE
 router.get('/:id/approve', function (req, res) {
-  req.body.announcement.isApproved = true;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
+  Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
-      console.log(updatedAnnouncement);
+      announcement.isApproved = true;
+      announcement.save();
+
       req.flash('success', 'That announcement has been approved!');
       res.redirect('back');
     }
@@ -86,12 +87,14 @@ router.get('/:id/approve', function (req, res) {
 
 // UNAPPROVE
 router.get('/:id/unapprove', function (req, res) {
-  req.body.announcement.isApproved = false;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
+  Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
+      announcement.isApproved = false;
+      announcement.save();
+
       req.flash('success', 'That announcement is no longer approved!');
       res.redirect('back');
     }
@@ -100,12 +103,14 @@ router.get('/:id/unapprove', function (req, res) {
 
 // PUBLISH
 router.get('/:id/publish', function (req, res) {
-  req.body.announcement.isPublished = true;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
+  Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
+      announcement.isPublished = true;
+      announcement.save();
+
       req.flash('success', 'That announcement has been published!');
       res.redirect('back');
     }
@@ -114,12 +119,14 @@ router.get('/:id/publish', function (req, res) {
 
 // UNPUBLISH
 router.get('/:id/unpublish', function (req, res) {
-  req.body.announcement.isPublished = false;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
+  Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
     } else {
+      announcement.isPublished = false;
+      announcement.save();
+
       req.flash('success', 'That announcement is no longer published!');
       res.redirect('back');
     }
