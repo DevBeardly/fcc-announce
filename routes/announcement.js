@@ -70,7 +70,7 @@ router.delete('/:id', function (req, res) {
 });
 
 // APPROVE
-router.get('/:id/approve', middleware.isAdmin, function (req, res) {
+router.get('/:id/approve', middleware.isEditor, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
@@ -86,7 +86,7 @@ router.get('/:id/approve', middleware.isAdmin, function (req, res) {
 });
 
 // UNAPPROVE
-router.get('/:id/unapprove', middleware.isAdmin, function (req, res) {
+router.get('/:id/unapprove', middleware.isEditor, function (req, res) {
   Announcement.findById(req.params.id, function (err, announcement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
