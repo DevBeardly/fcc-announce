@@ -71,8 +71,8 @@ router.delete('/:id', function (req, res) {
 
 // APPROVE
 router.get('/:id/approve', function (req, res) {
-  req.body.isApproved = true;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+  req.body.announcement.isApproved = true;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
@@ -86,8 +86,8 @@ router.get('/:id/approve', function (req, res) {
 
 // UNAPPROVE
 router.get('/:id/unapprove', function (req, res) {
-  req.body.isApproved = false;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+  req.body.announcement.isApproved = false;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
@@ -100,8 +100,8 @@ router.get('/:id/unapprove', function (req, res) {
 
 // PUBLISH
 router.get('/:id/publish', function (req, res) {
-  req.body.isPublished = true;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+  req.body.announcement.isPublished = true;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
@@ -114,8 +114,8 @@ router.get('/:id/publish', function (req, res) {
 
 // UNPUBLISH
 router.get('/:id/unpublish', function (req, res) {
-  req.body.isPublished = false;
-  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+  req.body.announcement.isPublished = false;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.announcement, function (err, updatedAnnouncement) {
     if (err) {
       req.flash('error', 'Could not find that announcement.');
       res.redirect('back');
