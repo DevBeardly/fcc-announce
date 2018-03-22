@@ -108,9 +108,7 @@
       <!-- <td><input type="checkbox" class="select-row"></td> -->
       <td><%= announcement.title %></td>
       <td><%= announcement.author.fullname %></td>
-        <% var date = announcement.dateUpdated.getMonth() + '/' +  %>
-        <% announcement.dateUpdated.getDay() + '/' + %>
-        <% announcement.dateUpdated.getFullYear().substring(2,3) %>
+        <% var date = announcement.dateUpdated.getMonth() + '/' + announcement.dateUpdated.getDay() + '/' + announcement.dateUpdated.getFullYear().substring(2,3) %>
       <td><%= date %></td>
       <!-- <td><%= announcement.dateUpdated.toDateString() %></td> -->
       <td>
