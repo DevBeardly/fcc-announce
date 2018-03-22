@@ -52,6 +52,19 @@ router.get('/edit', middleware.isLoggedIn, function (req, res) {
   });
 });
 
+// USER-ACCESSIBLE UPDATE USER INFO ROUTE
+router.put('/edit/:id', middleware.isLoggedIn, function (req, res) {
+  User.findByIdAndUpdate(req.params.id, req.body.user, function (err, updatedUser) {
+    if (err) {
+      req.flash('error', 'Something went wrong with the database. Try again later.');
+      res.redirect('back');
+    } else {
+      req.flash('success', 'Successfully updated your profile!');
+      res.redirect('/user');
+    }
+  });
+});
+
 // ADMIN EDIT USER INFO ROUTE
 router.get('/:id/edit', middleware.isLoggedIn, function (req, res) {
   User.findById(req.params.id, function (err, foundUser) {
