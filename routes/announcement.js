@@ -69,4 +69,60 @@ router.delete('/:id', function (req, res) {
   });
 });
 
+// APPROVE
+router.get('/:id/approve', function (req, res) {
+  req.body.isApproved = true;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+    if (err) {
+      req.flash('error', 'Could not find that announcement.');
+      res.redirect('back');
+    } else {
+      req.flash('success', 'That announcement has been approved!');
+      res.redirect('/admin/announcements');
+    }
+  });
+});
+
+// UNAPPROVE
+router.get('/:id/unapprove', function (req, res) {
+  req.body.isApproved = false;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+    if (err) {
+      req.flash('error', 'Could not find that announcement.');
+      res.redirect('back');
+    } else {
+      req.flash('success', 'That announcement is no longer approved!');
+      res.redirect('/admin/announcements');
+    }
+  });
+});
+
+// PUBLISH
+router.get('/:id/publish', function (req, res) {
+  req.body.isPublished = true;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+    if (err) {
+      req.flash('error', 'Could not find that announcement.');
+      res.redirect('back');
+    } else {
+      req.flash('success', 'That announcement has been published!');
+      res.redirect('/admin/announcements');
+    }
+  });
+});
+
+// UNPUBLISH
+router.get('/:id/unpublish', function (req, res) {
+  req.body.isPublished = false;
+  Announcement.findByIdAndUpdate(req.params.id, req.body.isApproved, function (err, updatedAnnouncement) {
+    if (err) {
+      req.flash('error', 'Could not find that announcement.');
+      res.redirect('back');
+    } else {
+      req.flash('success', 'That announcement is no longer published!');
+      res.redirect('/admin/announcements');
+    }
+  });
+});
+
 module.exports = router;
