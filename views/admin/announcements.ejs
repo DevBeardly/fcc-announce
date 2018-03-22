@@ -97,9 +97,8 @@
     <tr>
       <!-- <th><input type="checkbox" class="select-all" id="selectAll"></th> -->
       <th>Title</th>
-      <th>Description</th>
-      <th>Date Updated</th>
       <th>Author</th>
+      <th>Date Updated</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -108,9 +107,8 @@
     <tr>
       <!-- <td><input type="checkbox" class="select-row"></td> -->
       <td><%= announcement.title %></td>
-      <td><%- announcement.description.substring(0, 100) %>...</td>
-      <td><%= announcement.dateUpdated.toDateString() %></td>
       <td><%= announcement.author.fullname %></td>
+      <td><%= announcement.dateUpdated.toDateString() %></td>
       <td>
         <div class="btn-group">
           <a href="../announcements/<%= announcement._id %>/edit">
