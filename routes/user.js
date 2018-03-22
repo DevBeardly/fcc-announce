@@ -110,6 +110,7 @@ router.get('/reset', middleware.isLoggedIn, function (req, res) {
 router.post('/reset', middleware.isLoggedIn, function (req, res) {
   req.user.setPassword(req.body.password, function (err) {
     if (err) {
+      console.log(err);
       req.flash('error', 'Something went wrong with the database. Please try again later.');
       res.redirect('/user');
     } else {
