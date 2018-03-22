@@ -113,10 +113,16 @@ router.post('/reset', middleware.isLoggedIn, function (req, res) {
       req.flash('error', 'Something went wrong with the database. Try again later.');
       res.redirect('/user');
     } else {
-      user.setPassword(req.body.password);
-      user.save();
-      req.flash('success', 'Successfully updated your password.');
-      res.redirect('/user');
+      user.setPassword(req.body.password, function (err) {
+        if (err) {
+          req.flash('error', 'Something went wrong with the database. Try again later.');
+          res.redirect('/user');
+        } else {
+          user.save();
+          req.flash('success', 'Successfully updated your password.');
+          res.redirect('/user');
+        }
+      });
     }
   });
 });
