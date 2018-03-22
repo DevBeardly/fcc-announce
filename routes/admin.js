@@ -7,13 +7,7 @@ var middleware = require('../middleware');
 
 // ADMIN DASHBOARD LANDING
 router.get('/', middleware.isLoggedIn, function (req, res) {
-  Announcement.find({}, function (err, allAnnouncements) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('admin/index', { announcements: allAnnouncements });
-    }
-  });
+  res.redirect('/admin/announcements')
 });
 
 // ADMIN ANNOUNCEMENTS PANEL
@@ -29,24 +23,12 @@ router.get('/announcements', middleware.isLoggedIn, function (req, res) {
 
 // ADMIN GROUPS PANEL
 router.get('/groups', middleware.isLoggedIn, function (req, res) {
-  Announcement.find({}, function (err, allAnnouncements) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('admin/groups', { announcements: allAnnouncements });
-    }
-  });
+  res.redirect('/admin/announcements')
 });
 
 // ADMIN CONNECT PANEL
 router.get('/connect', middleware.isLoggedIn, function (req, res) {
-  Announcement.find({}, function (err, allAnnouncements) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('admin/connect', { announcements: allAnnouncements });
-    }
-  });
+  res.redirect('/admin/announcements')
 });
 
 // ADMIN USERS PANEL

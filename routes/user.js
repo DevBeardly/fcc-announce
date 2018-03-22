@@ -37,13 +37,6 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
     }
 
     res.redirect('/admin/users');
-
-    // SHOULD NOT BE AUTHENTICATING AS THE NEWLY CREATED USER
-    // --------------------------------------------------------
-    // passport.authenticate('local')(req, res, function () {
-    //   req.flash('success', 'New user added: ' + user.fullname);
-    //   res.redirect('/admin/users');
-    // });
   });
 });
 

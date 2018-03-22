@@ -47,7 +47,7 @@ router.post('/login', passport.authenticate('local', {
   failureRedirect: '/login',
 }), function (req, res) {
   if (req.user.isAdmin || req.user.isEditor) {
-    res.redirect('/admin');
+    res.redirect('/admin/announcements');
   } else {
     res.redirect('/user');
   }
