@@ -36,3 +36,7 @@ hr {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
+
+.center-button {
+  border-radius: 0;
+}
