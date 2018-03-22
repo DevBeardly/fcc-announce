@@ -32,7 +32,7 @@ router.get('/connect', middleware.isLoggedIn, function (req, res) {
 });
 
 // ADMIN USERS PANEL
-router.get('/users', middleware.isLoggedIn, function (req, res) {
+router.get('/users', middleware.isAdmin, function (req, res) {
   User.find({}, function (err, allUsers) {
     if (err) {
       console.log(err);
