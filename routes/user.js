@@ -40,7 +40,19 @@ router.post('/', middleware.isLoggedIn, function (req, res) {
   });
 });
 
-// EDIT USER INFO ROUTE
+// USER-ACCESSIBLE EDIT USER INFO ROUTE
+router.get('/edit', middleware.isLoggedIn, function (req, res) {
+  User.findById(req.user._id, function (err, foundUser) {
+    if (err) {
+      req.flash('error', 'Something went wrong with the database. Try again later.');
+      res.redirect('back');
+    } else {
+      res.render('user/user-edit', { user: foundUser });
+    }
+  });
+});
+
+// ADMIN EDIT USER INFO ROUTE
 router.get('/:id/edit', middleware.isLoggedIn, function (req, res) {
   User.findById(req.params.id, function (err, foundUser) {
     if (err) {
@@ -65,7 +77,7 @@ router.put('/:id', middleware.isLoggedIn, function (req, res) {
   });
 });
 
-// DELETE USER INFO ROUTE
+// ADMIN DELETE USER INFO ROUTE
 router.delete('/:id', function (req, res) {
   User.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
