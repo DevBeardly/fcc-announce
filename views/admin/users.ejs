@@ -93,7 +93,7 @@
 <table class="table" data-sort="table">
   <thead>
     <tr>
-      <th class="headerSortDown">Name</th>
+      <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Role</th>
@@ -195,6 +195,14 @@
   <script>
     // execute/clear BS loaders for docs
     $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+  </script>
+  <script>
+    // initial table sorting
+    $(document).ready(function() {
+      $('table').tablesorter({
+        sortList: [[0,0]],
+      });
+    });
   </script>
 
 <% include ../partials/footer %>
